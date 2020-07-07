@@ -24,14 +24,17 @@ import (
 )
 
 // The following IBM Cloud items need to be changed prior to running the sample program
-const address = "<grep11_server_address>:<port>"
-
+//const address = "<grep11_server_address>:<port>"
+const address = $HPCS_EP11_URL
 var callOpts = []grpc.DialOption{
 	grpc.WithTransportCredentials(credentials.NewTLS(&tls.Config{})),
 	grpc.WithPerRPCCredentials(&util.IAMPerRPCCredentials{
-		APIKey:   "<ibm_cloud_apikey>",
-		Endpoint: "<https://<iam_ibm_cloud_endpoint>",
-		Instance: "<hpcs_instance_id>",
+		//APIKey:   "<ibm_cloud_apikey>",
+		//Endpoint: "<https://<iam_ibm_cloud_endpoint>",
+		//Instance: "<hpcs_instance_id>",
+		APIKey:   $API_KEY,
+		Endpoint: "https://iam.cloud.ibm.com",
+		Instance: $HPCS_INSTANCE_ID,
 	}),
 }
 
